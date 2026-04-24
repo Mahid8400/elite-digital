@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-blue: #0070f3;
+  --color-brand-teal: #008080;
+  --color-brand-cyan: #00f2fe;
+  --color-charcoal: #0F131A;
+  --color-midnight: #0B0E14;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-midnight);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .bg-glow {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 128, 128, 0.1) 0%, rgba(0, 128, 128, 0) 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(0, 242, 254, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 0.5px solid rgba(0, 242, 254, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.02);
+    @apply rounded-3xl p-8 transition-all duration-500;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 242, 254, 0.3);
+    box-shadow: 0 12px 64px 0 rgba(0, 128, 128, 0.15), 0 0 20px rgba(0, 242, 254, 0.05);
+    transform: translateY(-5px);
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-white text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:bg-brand-cyan hover:text-midnight hover:shadow-[0_0_30px_rgba(0,242,254,0.4)] active:scale-95;
+    backdrop-filter: blur(10px);
+  }
+
+  .text-electric { color: #0070f3; }
+  .text-teal { color: #008080; }
+  .text-cyan { color: #00f2fe; }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+  }
+
+  .badge-pulse {
+    box-shadow: 0 0 20px rgba(0, 128, 128, 0.3);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-brand-cyan to-white;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
